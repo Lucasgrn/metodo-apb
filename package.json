@@ -1,0 +1,22 @@
+{
+  "name": "metodo-apb",
+  "version": "1.0.0",
+  "description": "Backend do projeto metodo-apb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucas-ogn/metodo-apb.git"
+  },
+  "author": "Lucas-ogn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lucas-ogn/metodo-apb/issues"
+  },
+  "homepage": "https://github.com/Lucas-ogn/metodo-apb#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
