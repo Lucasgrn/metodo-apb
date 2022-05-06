@@ -12,7 +12,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="TelaLogin" component={TelaLogin} options={{ headerShown: true }} />
+        <Stack.Screen name="TelaLogin" component={TelaLogin} options={{ headerShown: false }} />
         <Stack.Screen name="TelaDois" component={TelaDois} options={{ headerShown: true }} />
       </Stack.Navigator>
     </NavigationContainer>

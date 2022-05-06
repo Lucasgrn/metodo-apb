@@ -19,11 +19,7 @@ const TelaLogin = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.carrossel}>
-        {/* <Image style={styles.logo} source={require('../assets/img/unnamed.png')} /> */}
-        <Text style={styles.header1}>Lorem Ipsum</Text>
-        <Text style={styles.header2}>
-          Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out
-        </Text>
+        <Text style={styles.header1}>Seja bem vindo(a)!</Text>
       </View>
       <View style={styles.buttons}>
         <TouchableOpacity style={styles.cadastrar} onPress={() => navigation.navigate('TelaDois')}>
