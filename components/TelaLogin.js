@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, TextInput } from 'react-native';
 import {
   useFonts,
   Montserrat_600SemiBold,
@@ -16,18 +16,39 @@ const TelaLogin = ({ navigation }) => {
     <AppLoading />;
   }
 
+  const [number, onChangeNumber] = React.useState(null);
+
   return (
     <View style={styles.body}>
-      <View style={styles.carrossel}>
+      <View style={styles.bemvindo}>
         <Text style={styles.header1}>Seja bem vindo(a)!</Text>
       </View>
+      <View style={styles.inputArea}>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeNumber}
+          value={number}
+          placeholder="Usuário"
+          keyboardType="numeric"
+        >
+          {''}
+        </TextInput>
+        <TextInput
+          style={styles.inputDois}
+          onChangeText={onChangeNumber}
+          value={number}
+          placeholder="Senha"
+          keyboardType="numeric"
+        />
+      </View>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.cadastrar} onPress={() => navigation.navigate('TelaDois')}>
-          <Text style={styles.cadastrarText}>cadastrar</Text>
-        </TouchableOpacity>
         <TouchableOpacity style={styles.entrar} onPress={() => navigation.navigate('TelaDois')}>
           <Text style={styles.entrarText}>entrar</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.cadastrar} onPress={() => navigation.navigate('TelaDois')}>
+          <Text style={styles.cadastrarText}>cadastrar-se</Text>
+        </TouchableOpacity>
+        <Text style={styles.esqueceuSenha}>Esqueceu sua senha? Toque aqui para recuperar.</Text>
       </View>
     </View>
   );
@@ -35,68 +56,84 @@ const TelaLogin = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   body: {
-    alignItems: 'center',
     flex: 1,
-    justifyContent: 'space-between',
   },
-  carrossel: {
+  bemvindo: {
     alignItems: 'center',
-    flex: 1,
-    marginTop: 190,
-  },
-  logo: {
-    height: 250,
-    width: 250,
+    marginTop: 120,
   },
   header1: {
     fontFamily: 'Montserrat_600SemiBold',
-    fontSize: 20,
+    color: '#262626',
+    fontSize: 24,
     marginTop: 50,
   },
-  header2: {
-    fontFamily: 'Montserrat_400Regular',
-    fontSize: 15,
-    lineHeight: 20,
-    marginTop: 40,
-    textAlign: 'center',
-    width: 250,
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 60,
+  inputArea: {
+    marginTop: 116,
+    alignItems: 'center',
     width: '100%',
   },
-  cadastrar: {
-    backgroundColor: 'rgba(0,0,0,0)',
-    borderColor: '#000',
-    borderRadius: 5,
+  input: {
+    height: 52,
+    width: '80%',
     borderWidth: 1,
-    paddingHorizontal: 45,
-    paddingVertical: 10,
-    width: '45%',
+    borderRadius: 10,
+    padding: 10,
   },
-  cadastrarText: {
-    color: '#000',
-    fontFamily: 'Montserrat_400Regular',
-    fontSize: 16,
-    textAlign: 'center',
+  inputDois: {
+    height: 52,
+    width: '80%',
+    marginTop: 33,
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+  },
+  buttons: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 100,
+    marginTop: 34,
+    width: '100%',
   },
   entrar: {
-    backgroundColor: '#000',
-    borderColor: '#000',
+    backgroundColor: '#0A0D36',
+    borderColor: '#0A0D36',
     borderRadius: 5,
     borderWidth: 1,
-    marginLeft: 8,
-    paddingHorizontal: 45,
-    paddingVertical: 10,
-    width: '45%',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    width: '80%',
   },
   entrarText: {
     color: '#fff',
     fontFamily: 'Montserrat_400Regular',
+    lineHeight: 28,
     fontSize: 16,
     textAlign: 'center',
+  },
+  cadastrar: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderColor: '#0A0D36',
+    borderRadius: 5,
+    borderWidth: 1,
+    justifyContent: 'center',
+    maxHeight: 60,
+    marginTop: 20,
+    paddingVertical: 16,
+    width: '80%',
+  },
+  cadastrarText: {
+    color: '#0A0D36',
+    fontFamily: 'Montserrat_400Regular',
+    lineHeight: 28,
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  esqueceuSenha: {
+    fontFamily: 'Montserrat_400Regular',
+    lineHeight: 18,
+    fontSize: 12,
+    marginTop: 20,
   },
 });
 
