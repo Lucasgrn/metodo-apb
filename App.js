@@ -5,6 +5,7 @@ import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TelaLogin } from './components/TelaLogin';
+import { NavegadorApp } from './components/NavegadorApp';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,11 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="TelaLogin" component={TelaLogin} options={{ headerShown: false }} />
-        <Stack.Screen name="TelaDois" component={TelaDois} options={{ headerShown: true }} />
+        <Stack.Screen
+          name="NavegadorApp"
+          component={NavegadorApp}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

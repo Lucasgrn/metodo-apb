@@ -42,10 +42,13 @@ const TelaLogin = ({ navigation }) => {
         />
       </View>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.entrar} onPress={() => navigation.navigate('TelaDois')}>
+        <TouchableOpacity style={styles.entrar} onPress={() => navigation.navigate('NavegadorApp')}>
           <Text style={styles.entrarText}>entrar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.cadastrar} onPress={() => navigation.navigate('TelaDois')}>
+        <TouchableOpacity
+          style={styles.cadastrar}
+          onPress={() => navigation.navigate('NavegadorApp')}
+        >
           <Text style={styles.cadastrarText}>cadastrar-se</Text>
         </TouchableOpacity>
         <Text style={styles.esqueceuSenha}>Esqueceu sua senha? Toque aqui para recuperar.</Text>
