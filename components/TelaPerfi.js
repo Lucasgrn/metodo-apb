@@ -7,7 +7,7 @@ import {
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 
-const TelaLogin = ({ navigation }) => {
+const TelaPerfil = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
     Montserrat_400Regular,
@@ -141,4 +141,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { TelaLogin };
+export { TelaPerfil };
