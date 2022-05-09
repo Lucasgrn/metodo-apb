@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   useFonts,
   Montserrat_600SemiBold,
@@ -11,6 +11,9 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { HomeScreen } from './HomeScreen';
 import { TelaInformacoes } from './TelaInfomacoes';
 import { TelaPerfil } from './TelaPerfi';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+MaterialIcons.loadFont();
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -24,23 +27,38 @@ const NavegadorApp = ({ navigation }) => {
     <AppLoading />;
   }
 
-  const [number, onChangeNumber] = React.useState(null);
-
   return (
-    <View style={styles.body}>
-      <Tab.Navigator>
-        <Tab.Screen name="HomeScreen" component={HomeScreen} />
-        <Tab.Screen name="TelaInformacoes" component={TelaInformacoes} />
-        <Tab.Screen name="TelaPerfil" component={TelaPerfil} />
-      </Tab.Navigator>
-    </View>
+    <Tab.Navigator activeColor="#0A0D36" inactiveColor="#b6b8d4" barStyle={styles.tabBar}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Info"
+        component={TelaInformacoes}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialIcons name="info" size={24} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="TelaPerfil"
+        component={TelaPerfil}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialIcons name="person" size={24} color={color} />,
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 
 const styles = StyleSheet.create({
-  body: {
-    backgroundColor: '#FAFCFE',
-    flex: 1,
+  tabBar: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
 });
 
