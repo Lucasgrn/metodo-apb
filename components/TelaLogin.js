@@ -56,6 +56,7 @@ const TelaLogin = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   body: {
+    backgroundColor: '#FAFCFE',
     flex: 1,
   },
   bemvindo: {
@@ -77,7 +78,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F4F4F4',
     height: 52,
     width: '80%',
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
   },
@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     height: 52,
     width: '80%',
     marginTop: 33,
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
   },
