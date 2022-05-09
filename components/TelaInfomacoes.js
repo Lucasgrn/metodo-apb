@@ -21,37 +21,7 @@ const TelaInformacoes = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.bemvindo}>
-        <Text style={styles.header1}>Seja bem vindo(a)!</Text>
-      </View>
-      <View style={styles.inputArea}>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder="Usuário"
-          keyboardType="numeric"
-        >
-          {''}
-        </TextInput>
-        <TextInput
-          style={styles.inputDois}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder="Senha"
-          keyboardType="numeric"
-        />
-      </View>
-      <View style={styles.buttons}>
-        <TouchableOpacity style={styles.entrar} onPress={() => navigation.navigate('HomeScreen')}>
-          <Text style={styles.entrarText}>entrar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.cadastrar}
-          onPress={() => navigation.navigate('HomeScreen')}
-        >
-          <Text style={styles.cadastrarText}>cadastrar-se</Text>
-        </TouchableOpacity>
-        <Text style={styles.esqueceuSenha}>Esqueceu sua senha? Toque aqui para recuperar.</Text>
+        <Text style={styles.header1}>INFO!</Text>
       </View>
     </View>
   );

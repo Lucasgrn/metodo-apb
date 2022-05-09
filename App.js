@@ -5,9 +5,7 @@ import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TelaLogin } from './components/TelaLogin';
-import { HomeScreen } from './components/HomeScreen';
-import { TelaPerfil } from './components/TelaPerfi';
-import { TelaInformacoes } from './components/TelaInfomacoes';
+import { NavegadorApp } from './components/NavegadorApp';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,13 +14,11 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="TelaLogin" component={TelaLogin} options={{ headerShown: false }} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: true }} />
         <Stack.Screen
-          name="TelaInformacoes"
-          component={TelaInformacoes}
-          options={{ headerShown: true }}
+          name="NavegadorApp"
+          component={NavegadorApp}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen name="TelaPerfil" component={TelaPerfil} options={{ headerShown: true }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
