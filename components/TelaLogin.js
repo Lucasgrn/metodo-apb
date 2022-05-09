@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
+    backgroundColor: '#F4F4F4',
     height: 52,
     width: '80%',
     borderWidth: 1,
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   inputDois: {
+    backgroundColor: '#F4F4F4',
     height: 52,
     width: '80%',
     marginTop: 33,
