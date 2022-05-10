@@ -30,14 +30,14 @@ const NavegadorApp = ({ navigation }) => {
   return (
     <Tab.Navigator activeColor="#0A0D36" inactiveColor="#b6b8d4" barStyle={styles.tabBar}>
       <Tab.Screen
-        name="Home"
+        name="home"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
         }}
       />
       <Tab.Screen
-        name="Info"
+        name="info"
         component={TelaInformacoes}
         options={{
           tabBarIcon: ({ color }) => <MaterialIcons name="info" size={24} color={color} />,
