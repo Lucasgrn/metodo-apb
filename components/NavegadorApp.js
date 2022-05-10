@@ -28,7 +28,12 @@ const NavegadorApp = ({ navigation }) => {
   }
 
   return (
-    <Tab.Navigator activeColor="#0A0D36" inactiveColor="#b6b8d4" barStyle={styles.tabBar}>
+    <Tab.Navigator
+      activeColor="#0A0D36"
+      inactiveColor="#b6b8d4"
+      barStyle={styles.tabBar}
+      labeled={false}
+    >
       <Tab.Screen
         name="home"
         component={HomeScreen}
