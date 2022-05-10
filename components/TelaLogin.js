@@ -16,7 +16,8 @@ const TelaLogin = ({ navigation }) => {
     <AppLoading />;
   }
 
-  const [number, onChangeNumber] = React.useState(null);
+  const [text, onChangeText] = React.useState(null);
+  const [textDois, onChangeTextDois] = React.useState(null);
 
   return (
     <View style={styles.body}>
@@ -26,19 +27,15 @@ const TelaLogin = ({ navigation }) => {
       <View style={styles.inputArea}>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
+          onChangeText={onChangeText}
+          value={text}
           placeholder="Usuário"
-          keyboardType="numeric"
-        >
-          {''}
-        </TextInput>
+        />
         <TextInput
           style={styles.inputDois}
-          onChangeText={onChangeNumber}
-          value={number}
+          onChangeText={onChangeTextDois}
+          value={textDois}
           placeholder="Senha"
-          keyboardType="numeric"
         />
       </View>
       <View style={styles.buttons}>
