@@ -22,33 +22,38 @@ const TelaLogin = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.bemvindo}>
-        <Text style={styles.header1}>Seja bem vindo(a)!</Text>
+        <Text style={styles.bemvindo__header1}>Seja bem vindo(a)!</Text>
       </View>
       <View style={styles.inputArea}>
         <TextInput
-          style={styles.input}
+          style={styles.inputArea__login}
           onChangeText={onChangeText}
           value={text}
           placeholder="Usuário"
         />
         <TextInput
-          style={styles.inputDois}
+          style={styles.inputArea__senha}
           onChangeText={onChangeTextDois}
           value={textDois}
           placeholder="Senha"
         />
       </View>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.entrar} onPress={() => navigation.navigate('NavegadorApp')}>
-          <Text style={styles.entrarText}>entrar</Text>
-        </TouchableOpacity>
         <TouchableOpacity
-          style={styles.cadastrar}
+          style={styles.buttons__entrar}
           onPress={() => navigation.navigate('NavegadorApp')}
         >
-          <Text style={styles.cadastrarText}>cadastrar-se</Text>
+          <Text style={styles.buttons__entrarText}>entrar</Text>
         </TouchableOpacity>
-        <Text style={styles.esqueceuSenha}>Esqueceu sua senha? Toque aqui para recuperar.</Text>
+        <TouchableOpacity
+          style={styles.buttons__cadastrar}
+          onPress={() => navigation.navigate('NavegadorApp')}
+        >
+          <Text style={styles.buttons__cadastrarText}>cadastrar-se</Text>
+        </TouchableOpacity>
+        <Text style={styles.buttons__esqueceuSenha}>
+          Esqueceu sua senha? Toque aqui para recuperar.
+        </Text>
       </View>
     </View>
   );
@@ -63,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 120,
   },
-  header1: {
+  bemvindo__header1: {
     fontFamily: 'Montserrat_600SemiBold',
     color: '#262626',
     fontSize: 24,
@@ -74,14 +79,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
-  input: {
+  inputArea__login: {
     backgroundColor: '#F4F4F4',
     height: 52,
     width: '80%',
     borderRadius: 10,
     padding: 10,
   },
-  inputDois: {
+  inputArea__senha: {
     backgroundColor: '#F4F4F4',
     height: 52,
     width: '80%',
@@ -96,7 +101,7 @@ const styles = StyleSheet.create({
     marginTop: 34,
     width: '100%',
   },
-  entrar: {
+  buttons__entrar: {
     backgroundColor: '#0A0D36',
     borderColor: '#0A0D36',
     borderRadius: 5,
@@ -105,14 +110,14 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     width: '80%',
   },
-  entrarText: {
+  buttons__entrarText: {
     color: '#fff',
     fontFamily: 'Montserrat_400Regular',
     lineHeight: 28,
     fontSize: 16,
     textAlign: 'center',
   },
-  cadastrar: {
+  buttons__cadastrar: {
     backgroundColor: 'rgba(0,0,0,0)',
     borderColor: '#0A0D36',
     borderRadius: 5,
@@ -123,14 +128,14 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     width: '80%',
   },
-  cadastrarText: {
+  buttons__cadastrarText: {
     color: '#0A0D36',
     fontFamily: 'Montserrat_400Regular',
     lineHeight: 28,
     fontSize: 16,
     textAlign: 'center',
   },
-  esqueceuSenha: {
+  buttons__esqueceuSenha: {
     fontFamily: 'Montserrat_400Regular',
     lineHeight: 18,
     fontSize: 12,

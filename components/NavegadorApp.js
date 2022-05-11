@@ -31,7 +31,7 @@ const NavegadorApp = ({ navigation }) => {
     <Tab.Navigator
       activeColor="#0A0D36"
       inactiveColor="#b6b8d4"
-      barStyle={styles.tabBar}
+      barStyle={styles.navbar__tabBar}
       labeled={false}
     >
       <Tab.Screen
@@ -60,10 +60,8 @@ const NavegadorApp = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  tabBar: {
+  navbar__tabBar: {
     backgroundColor: '#fff',
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
   },
 });
 

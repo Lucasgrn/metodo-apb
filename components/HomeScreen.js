@@ -21,8 +21,11 @@ const HomeScreen = ({ navigation }) => {
 
   const renderModulosItem = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.itemModulo}>
-        <ImageBackground source={item.image} style={styles.itemImage}></ImageBackground>
+      <TouchableOpacity style={styles.modulosDataWrapper__itemModulo}>
+        <ImageBackground
+          source={item.image}
+          style={styles.modulosDataWrapper__itemImage}
+        ></ImageBackground>
       </TouchableOpacity>
     );
   };
@@ -30,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.bemvindo}>
-        <Text style={styles.header1}>Olá, Fulano</Text>
+        <Text style={styles.bemvindo__header1}>Olá, Fulano</Text>
       </View>
       <View style={styles.modulosDataWrapper}>
         <FlatList
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 120,
     marginLeft: 24,
   },
-  header1: {
+  bemvindo__header1: {
     fontFamily: 'Montserrat_600SemiBold',
     color: '#0A0D36',
     fontSize: 32,
@@ -63,11 +66,11 @@ const styles = StyleSheet.create({
   modulosDataWrapper: {
     flex: 1,
   },
-  itemModulo: {
+  modulosDataWrapper__itemModulo: {
     marginTop: 32,
     marginLeft: 20,
   },
-  itemImage: {
+  modulosDataWrapper__itemImage: {
     width: 234,
     height: 354,
   },
