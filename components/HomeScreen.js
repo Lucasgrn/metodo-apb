@@ -7,7 +7,6 @@ import {
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 import modulosData from '../assets/data/modulosData';
-import { TelaTreino } from './telaTreino';
 
 const HomeScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -24,12 +23,15 @@ const HomeScreen = ({ navigation }) => {
     return (
       <TouchableOpacity
         style={styles.modulosDataWrapper__itemModulo}
-        onPress={() => navigation.navigate('TelaTreino')}
+        onPress={() =>
+          navigation.navigate('TelaTreino', {
+            item: item,
+          })
+        }
       >
-        <ImageBackground
-          source={item.image}
-          style={styles.modulosDataWrapper__itemImage}
-        ></ImageBackground>
+        <ImageBackground source={item.image} style={styles.modulosDataWrapper__itemImage}>
+          <Text style={styles.testando}>{item.title}</Text>
+        </ImageBackground>
       </TouchableOpacity>
     );
   };
@@ -77,6 +79,11 @@ const styles = StyleSheet.create({
   modulosDataWrapper__itemImage: {
     width: 234,
     height: 354,
+  },
+  testando: {
+    fontFamily: 'Montserrat_600SemiBold',
+    color: '#fff',
+    fontSize: 32,
   },
 });
 

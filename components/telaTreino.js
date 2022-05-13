@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 MaterialIcons.loadFont();
 
-const TelaTreino = ({ navigation }) => {
+const TelaTreino = ({ route, navigation }) => {
   const [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
     Montserrat_400Regular,
@@ -20,11 +20,10 @@ const TelaTreino = ({ navigation }) => {
     <AppLoading />;
   }
 
-  const [number, onChangeNumber] = React.useState(null);
-
+  const { item } = route.params;
   return (
     <View style={styles.migas}>
-      <Text>helo</Text>
+      <Text>{item.title}</Text>
     </View>
   );
 };

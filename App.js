@@ -12,6 +12,7 @@ import {
   Montserrat_400Regular,
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
+import { TelaTreino } from './components/TelaTreino';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,18 +34,10 @@ function App() {
           component={NavegadorApp}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="TelaTreino" component={TelaTreino} options={{ headerShown: true }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const TelaDois = ({ navigation }) => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Hello world dois</Text>
-      <Button title="Go to Details... again" onPress={() => navigation.push('TelaDois')} />
-    </View>
-  );
-};
 
 export default App;
