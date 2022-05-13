@@ -21,11 +21,17 @@ const HomeScreen = ({ navigation }) => {
 
   const renderModulosItem = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.modulosDataWrapper__itemModulo}>
-        <ImageBackground
-          source={item.image}
-          style={styles.modulosDataWrapper__itemImage}
-        ></ImageBackground>
+      <TouchableOpacity
+        style={styles.modulosDataWrapper__itemModulo}
+        onPress={() =>
+          navigation.navigate('TelaTreino', {
+            item: item,
+          })
+        }
+      >
+        <ImageBackground source={item.image} style={styles.modulosDataWrapper__itemImage}>
+          <Text style={styles.testando}>{item.title}</Text>
+        </ImageBackground>
       </TouchableOpacity>
     );
   };
@@ -73,6 +79,11 @@ const styles = StyleSheet.create({
   modulosDataWrapper__itemImage: {
     width: 234,
     height: 354,
+  },
+  testando: {
+    fontFamily: 'Montserrat_600SemiBold',
+    color: '#fff',
+    fontSize: 32,
   },
 });
 
