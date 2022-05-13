@@ -6,10 +6,24 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TelaLogin } from './components/TelaLogin';
 import { NavegadorApp } from './components/NavegadorApp';
+import {
+  useFonts,
+  Montserrat_600SemiBold,
+  Montserrat_400Regular,
+} from '@expo-google-fonts/montserrat';
+import AppLoading from 'expo-app-loading';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+  const [fontsLoaded] = useFonts({
+    Montserrat_600SemiBold,
+    Montserrat_400Regular,
+  });
+  if (!fontsLoaded) {
+    <AppLoading />;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

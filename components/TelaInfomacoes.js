@@ -23,22 +23,22 @@ const TelaInformacoes = ({ navigation }) => {
       <View style={styles.bemvindo}>
         <ImageBackground
           source={require('../assets/images/informacoes.png')}
-          style={styles.imagemProfessor}
+          style={styles.bemvindo__imagemProfessor}
         ></ImageBackground>
-        <Text style={styles.header1}>Mestre Pajé</Text>
+        <Text style={styles.bemvindo__header1}>Mestre Pajé</Text>
         <View style={styles.sobre}>
-          <Text style={styles.header2}>Quem sou?</Text>
-          <Text style={styles.paragrafo}>
+          <Text style={styles.sobre__header2}>Quem sou?</Text>
+          <Text style={styles.sobre__paragrafo}>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
             has been the industry's standard dummy text ever since the 1500s, when an unknown{' '}
           </Text>
-          <Text style={styles.header2}>Estilo de Capoeira</Text>
-          <Text style={styles.paragrafo}>
+          <Text style={styles.sobre__header2}>Estilo de Capoeira</Text>
+          <Text style={styles.sobre__paragrafo}>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
             has been the industry's standard dummy text ever since the 1500s, when an unknown{' '}
           </Text>
-          <Text style={styles.header2}>Por que fazer o curso?</Text>
-          <Text style={styles.paragrafo}>
+          <Text style={styles.sobre__header2}>Por que fazer o curso?</Text>
+          <Text style={styles.sobre__paragrafo}>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
             has been the industry's standard dummy text ever since the 1500s, when an unknown{' '}
           </Text>
@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
     marginLeft: 24,
     marginRight: 24,
   },
-  imagemProfessor: {
+  bemvindo__imagemProfessor: {
     width: '100%',
     height: 230,
   },
-  header1: {
+  bemvindo__header1: {
     fontFamily: 'Montserrat_600SemiBold',
     color: '#0A0D36',
     fontSize: 20,
@@ -72,13 +72,13 @@ const styles = StyleSheet.create({
   sobre: {
     marginTop: 25,
   },
-  header2: {
+  sobre__header2: {
     fontFamily: 'Montserrat_400Regular',
     color: '#000',
     fontSize: 15,
     marginTop: 15,
   },
-  paragrafo: {
+  sobre__paragrafo: {
     fontFamily: 'Montserrat_400Regular',
     fontSize: 15,
     color: '#7A7A7A',

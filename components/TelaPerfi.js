@@ -25,36 +25,38 @@ const TelaPerfil = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.perfilWrapper}>
-        <View style={styles.bannerWrapper}></View>
-        <Text style={styles.header1}>Fulano de tal</Text>
+        <View style={styles.perfilWrapper__banner}></View>
+        <Text style={styles.perfilWrapper__header1}>Fulano de tal</Text>
       </View>
       <View style={styles.treinosWrapper}>
-        <Text style={styles.header2}>Ultimo treino</Text>
+        {/* Ultimo treinado */}
+        <Text style={styles.treinosWrapper__header2}>Ultimo treino</Text>
         <View style={styles.treinoWrapper}>
           <MaterialIcons
             name="play-circle-fill"
             size={35}
             color={'#0A0D36'}
-            style={styles.iconeTreino}
+            style={styles.treinoWrapper__iconeTreino}
           />
-          <View style={styles.textosTreino}>
-            <Text style={styles.tituloTreino}>Treino de ginga</Text>
-            <Text style={styles.detalhesTreino}>
+          <View>
+            <Text style={styles.treinoWrapper__tituloTreino}>Treino de ginga</Text>
+            <Text style={styles.treinoWrapper__detalhesTreino}>
               Nessa aula você vai aprender o movimento de ginga
             </Text>
           </View>
         </View>
-        <Text style={styles.header2}>Treino Finalizado</Text>
+        {/* Treino finalizado */}
+        <Text style={styles.treinosWrapper__header2}>Treino Finalizado</Text>
         <View style={styles.treinoWrapper}>
           <MaterialIcons
             name="play-circle-fill"
             size={35}
             color={'#0A0D36'}
-            style={styles.iconeTreino}
+            style={styles.treinoWrapper__iconeTreino}
           />
           <View>
-            <Text style={styles.tituloTreino}>Treino de Benção</Text>
-            <Text style={styles.detalhesTreino}>
+            <Text style={styles.treinoWrapper__tituloTreino}>Treino de Benção</Text>
+            <Text style={styles.treinoWrapper__detalhesTreino}>
               Nessa aula você vai aprender o movimento de ginga
             </Text>
           </View>
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   perfilWrapper: {
     alignItems: 'center',
   },
-  bannerWrapper: {
+  perfilWrapper__banner: {
     alignItems: 'center',
     backgroundColor: '#C4C4C4',
     borderBottomLeftRadius: 50,
@@ -80,13 +82,13 @@ const styles = StyleSheet.create({
     height: 155,
     width: '100%',
   },
-  header1: {
+  perfilWrapper__header1: {
     fontFamily: 'Montserrat_600SemiBold',
     color: '#262626',
     fontSize: 24,
     marginTop: 60,
   },
-  header2: {
+  treinosWrapper__header2: {
     fontFamily: 'Montserrat_600SemiBold',
     color: '#262626',
     fontSize: 16,
@@ -111,17 +113,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#D7D7D7',
   },
-  iconeTreino: {
+  treinoWrapper__iconeTreino: {
     marginRight: 20,
   },
-  tituloTreino: {
+  treinoWrapper__tituloTreino: {
     fontFamily: 'Montserrat_600SemiBold',
     color: '#262626',
     fontSize: 14,
     lineHeight: 18,
     width: '80%',
+    marginBottom: 3,
   },
-  detalhesTreino: {
+  treinoWrapper__detalhesTreino: {
     fontFamily: 'Montserrat_400Regular',
     color: '#262626',
     fontSize: 14,
