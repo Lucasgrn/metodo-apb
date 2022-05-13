@@ -66,11 +66,102 @@ const TelaTreino = ({ route, navigation }) => {
         </View>
 
         {/* schoollView */}
-        <ScrollView style={styles.scrollView}>
+        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
           <TouchableOpacity style={styles.scrollView__elementoAula}>
             <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
             <View style={styles.elementoAula__textos}>
-              <Text style={styles.elementoAula__header1}>{item.title}</Text>
+              <Text style={styles.elementoAula__header1}>{item.title} 1</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 2</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 3</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 4</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 5</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 6</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 7</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 8</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 9</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 10</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 11</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 12</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 13</Text>
+              <Text style={styles.elementoAula__header2}>{item.description}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.scrollView__elementoAula}>
+            <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
+            <View style={styles.elementoAula__textos}>
+              <Text style={styles.elementoAula__header1}>{item.title} 14</Text>
               <Text style={styles.elementoAula__header2}>{item.description}</Text>
             </View>
           </TouchableOpacity>
@@ -148,13 +239,14 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: '#fff',
-    marginHorizontal: 24,
     marginTop: 15,
+    marginBottom: 365,
   },
   scrollView__elementoAula: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 15,
+    marginHorizontal: 24,
   },
   elementoAula__textos: {
     marginLeft: 10,
