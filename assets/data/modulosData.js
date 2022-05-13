@@ -29,7 +29,7 @@ const modulosData = [
     location: 'Bahia',
     image: require('../images/card.png'),
     imageBig: require('../images/card-big.png'),
-    description: 'Uma introducao a historia da capoeira.',
+    description: 'Uma introducao a historia da capoeira Pernambucana.',
     liked: true,
     price: 30,
     rating: 5,
