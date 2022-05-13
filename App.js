@@ -34,7 +34,7 @@ function App() {
           component={NavegadorApp}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="TelaTreino" component={TelaTreino} options={{ headerShown: true }} />
+        <Stack.Screen name="TelaTreino" component={TelaTreino} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
