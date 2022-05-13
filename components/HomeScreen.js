@@ -7,6 +7,7 @@ import {
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 import modulosData from '../assets/data/modulosData';
+import { TelaTreino } from './telaTreino';
 
 const HomeScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -21,7 +22,10 @@ const HomeScreen = ({ navigation }) => {
 
   const renderModulosItem = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.modulosDataWrapper__itemModulo}>
+      <TouchableOpacity
+        style={styles.modulosDataWrapper__itemModulo}
+        onPress={() => navigation.navigate('TelaTreino')}
+      >
         <ImageBackground
           source={item.image}
           style={styles.modulosDataWrapper__itemImage}
