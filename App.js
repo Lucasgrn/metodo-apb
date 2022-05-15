@@ -11,7 +11,7 @@ import {
   Montserrat_400Regular,
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
-import { TelaTreino } from './components/TelaTreino';
+import { TelaTreino } from './components/telaTreino';
 
 const Stack = createNativeStackNavigator();
 
