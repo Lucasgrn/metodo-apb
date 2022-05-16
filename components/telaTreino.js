@@ -67,7 +67,7 @@ const TelaTreino = ({ route, navigation }) => {
 
         {/* schoollView */}
         <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-          <TouchableOpacity style={styles.scrollView__elementoAula}>
+          <TouchableOpacity style={styles.scrollView__elementoAula} onPress={() => navigation.navigate('Capoeira')}>
             <MaterialIcons name="play-circle-fill" size={35} color={'#000'} />
             <View style={styles.elementoAula__textos}>
               <Text style={styles.elementoAula__header1}>{item.title} 1</Text>
