@@ -12,6 +12,7 @@ import {
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 import { TelaTreino } from './components/telaTreino';
+import { Capoeira } from './components/Capoeira';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="TelaTreino" component={TelaTreino} options={{ headerShown: false }} />
+        <Stack.Screen name="Capoeira" component={Capoeira} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
