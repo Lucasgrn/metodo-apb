@@ -6,14 +6,15 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import DateField from "react-native-datefield";
+import RNPickerSelect from "react-native-picker-select";
 
 const TelaDeCadastro = ({ navigation }) => {
   const [Nome, onChangeNome] = React.useState(null);
   const [Email, onChangeEmail] = React.useState(null);
-  const [DataDeNascimento, onChangeDataDeNascimento] = React.useState(null);
-  const [Genero, onChangeGenero] = React.useState(null);
   const [Senha, onChangeSenha] = React.useState(null);
   const [SenhaDois, onChangeSenhaDois] = React.useState(null);
+  const [Genero, onChageGenero] = React.useState(null);
 
   return (
     <View style={styles.body}>
@@ -28,37 +29,53 @@ const TelaDeCadastro = ({ navigation }) => {
           style={styles.inputArea__Textinput}
           onChangeText={onChangeNome}
           value={Nome}
-          placeholder="Usuário"
+          placeholder="Nome"
         />
-        <TextInput
-          style={styles.inputArea__Textinput}
-          onChangeText={onChangeGenero}
-          value={Genero}
-          placeholder="Genero"
-        />
-        <TextInput
-          style={styles.inputArea__Textinput}
-          onChangeText={onChangeDataDeNascimento}
-          value={DataDeNascimento}
-          placeholder="Data de nascimento"
-        />
+        <View style={styles.inputArea__Generoinput}>
+          <RNPickerSelect
+            onValueChange={onChageGenero}
+            placeholder={{ label: "Genero", value: null }}
+            items={[
+              { label: "Masculino", value: "Masculino" },
+              { label: "Feminino", value: "Feminino" },
+            ]}
+          />
+        </View>
+        {/* <DateField
+          labelDate="Dia"
+          labelMonth="Mes"
+          labelYear="Ano"
+          styleInput={styles.inputBorder}
+        /> */}
         <TextInput
           style={styles.inputArea__Textinput}
           onChangeText={onChangeSenha}
           value={Senha}
-          placeholder="Senha"
+          placeholder="Nova Senha"
           secureTextEntry
         />
         <TextInput
           style={styles.inputArea__Textinput}
           onChangeText={onChangeSenhaDois}
           value={SenhaDois}
-          placeholder="Senha"
+          placeholder="Repetir Senha"
           secureTextEntry
         />
         <TouchableOpacity
           style={styles.buttons__cadastrar}
-          onPress={() => navigation.navigate("TelaLogin")}
+          onPress={() => {
+            let email = Email;
+            let nome = Nome;
+            let genero = Genero;
+            let senha;
+            if (Senha === SenhaDois) {
+              senha = Senha;
+            }
+            console.log(
+              `Email: ${email}, nome: ${nome}, genero: ${genero} e senha: ${senha}`
+            );
+            navigation.navigate("TelaLogin");
+          }}
         >
           <Text style={styles.buttons__cadastrarText}>cadastrar</Text>
         </TouchableOpacity>
@@ -86,6 +103,26 @@ const styles = StyleSheet.create({
     marginTop: 21,
     fontSize: 15,
   },
+  inputArea__Generoinput: {
+    backgroundColor: "#F4F4F4",
+    height: 52,
+    width: "80%",
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 21,
+    fontSize: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  // inputBorder: {
+  //   backgroundColor: "#F4F4F4",
+  //   height: 52,
+  //   width: "27%",
+  //   borderRadius: 10,
+  //   padding: 10,
+  //   marginTop: 21,
+  //   fontSize: 15,
+  // },
   buttons__cadastrar: {
     marginTop: 40,
     backgroundColor: "#0A0D36",
