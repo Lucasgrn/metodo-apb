@@ -15,36 +15,38 @@ const TelaDeCadastro = ({ navigation }) => {
 
   return (
     <View style={styles.body}>
-      <TextInput
-        style={styles.inputArea__Textinput}
-        onChangeText={onChangeEmail}
-        value={Email}
-        placeholder="Email"
-      />
-      <TextInput
-        style={styles.inputArea__Textinput}
-        onChangeText={onChangeNome}
-        value={Nome}
-        placeholder="Usuário"
-      />
-      <TextInput
-        style={styles.inputArea__Textinput}
-        onChangeText={onChangeSenha}
-        value={Senha}
-        placeholder="Senha"
-      />
-      <TextInput
-        style={styles.inputArea__Textinput}
-        onChangeText={onChangeSenhaDois}
-        value={SenhaDois}
-        placeholder="Senha"
-      />
-      <TouchableOpacity
-        style={styles.buttons__cadastrar}
-        onPress={() => navigation.navigate("TelaLogin")}
-      >
-        <Text style={styles.buttons__cadastrarText}>cadastrar</Text>
-      </TouchableOpacity>
+      <View style={styles.inputArea}>
+        <TextInput
+          style={styles.inputArea__Textinput}
+          onChangeText={onChangeEmail}
+          value={Email}
+          placeholder="Email"
+        />
+        <TextInput
+          style={styles.inputArea__Textinput}
+          onChangeText={onChangeNome}
+          value={Nome}
+          placeholder="Usuário"
+        />
+        <TextInput
+          style={styles.inputArea__Textinput}
+          onChangeText={onChangeSenha}
+          value={Senha}
+          placeholder="Senha"
+        />
+        <TextInput
+          style={styles.inputArea__Textinput}
+          onChangeText={onChangeSenhaDois}
+          value={SenhaDois}
+          placeholder="Senha"
+        />
+        <TouchableOpacity
+          style={styles.buttons__cadastrar}
+          onPress={() => navigation.navigate("TelaLogin")}
+        >
+          <Text style={styles.buttons__cadastrarText}>cadastrar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -53,8 +55,11 @@ const styles = StyleSheet.create({
   body: {
     backgroundColor: "#FAFCFE",
     flex: 1,
+  },
+  inputArea: {
+    marginTop: "40%",
     alignItems: "center",
-    justifyContent: "center",
+    width: "100%",
   },
   inputArea__Textinput: {
     backgroundColor: "#F4F4F4",
