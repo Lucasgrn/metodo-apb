@@ -1,12 +1,19 @@
-import * as React from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
+import * as React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import {
   useFonts,
   Montserrat_600SemiBold,
   Montserrat_400Regular,
-} from '@expo-google-fonts/montserrat';
-import AppLoading from 'expo-app-loading';
-import modulosData from '../assets/data/modulosData';
+} from "@expo-google-fonts/montserrat";
+import AppLoading from "expo-app-loading";
+import modulosData from "../assets/data/modulosData";
 
 const HomeScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -24,12 +31,15 @@ const HomeScreen = ({ navigation }) => {
       <TouchableOpacity
         style={styles.modulosDataWrapper__itemModulo}
         onPress={() =>
-          navigation.navigate('TelaTreino', {
+          navigation.navigate("TelaTreino", {
             item: item,
           })
         }
       >
-        <ImageBackground source={item.image} style={styles.modulosDataWrapper__itemImage}>
+        <ImageBackground
+          source={item.image}
+          style={styles.modulosDataWrapper__itemImage}
+        >
           <Text style={styles.testando}>{item.title}</Text>
         </ImageBackground>
       </TouchableOpacity>
@@ -48,6 +58,7 @@ const HomeScreen = ({ navigation }) => {
           keyExtractor={(item) => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
+          overScrollMode={"never"}
         />
       </View>
     </View>
@@ -56,17 +67,17 @@ const HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: '#FAFCFE',
+    backgroundColor: "#FAFCFE",
     flex: 1,
   },
   bemvindo: {
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     marginTop: 120,
     marginLeft: 24,
   },
   bemvindo__header1: {
-    fontFamily: 'Montserrat_600SemiBold',
-    color: '#0A0D36',
+    fontFamily: "Montserrat_600SemiBold",
+    color: "#0A0D36",
     fontSize: 32,
   },
   modulosDataWrapper: {
@@ -81,8 +92,8 @@ const styles = StyleSheet.create({
     height: 354,
   },
   testando: {
-    fontFamily: 'Montserrat_600SemiBold',
-    color: '#fff',
+    fontFamily: "Montserrat_600SemiBold",
+    color: "#fff",
     fontSize: 32,
   },
 });

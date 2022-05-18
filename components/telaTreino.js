@@ -73,6 +73,7 @@ const TelaTreino = ({ route, navigation }) => {
         <ScrollView
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
+          overScrollMode={"never"}
         >
           <TouchableOpacity
             style={styles.scrollView__elementoAula}
