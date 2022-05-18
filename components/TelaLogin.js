@@ -42,6 +42,7 @@ const TelaLogin = ({ navigation }) => {
           onChangeText={onChangeTextDois}
           value={textDois}
           placeholder="Senha"
+          secureTextEntry
         />
       </View>
       <View style={styles.buttons}>

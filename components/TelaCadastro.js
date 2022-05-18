@@ -10,6 +10,8 @@ import {
 const TelaDeCadastro = ({ navigation }) => {
   const [Nome, onChangeNome] = React.useState(null);
   const [Email, onChangeEmail] = React.useState(null);
+  const [DataDeNascimento, onChangeDataDeNascimento] = React.useState(null);
+  const [Genero, onChangeGenero] = React.useState(null);
   const [Senha, onChangeSenha] = React.useState(null);
   const [SenhaDois, onChangeSenhaDois] = React.useState(null);
 
@@ -30,15 +32,29 @@ const TelaDeCadastro = ({ navigation }) => {
         />
         <TextInput
           style={styles.inputArea__Textinput}
+          onChangeText={onChangeGenero}
+          value={Genero}
+          placeholder="Genero"
+        />
+        <TextInput
+          style={styles.inputArea__Textinput}
+          onChangeText={onChangeDataDeNascimento}
+          value={DataDeNascimento}
+          placeholder="Data de nascimento"
+        />
+        <TextInput
+          style={styles.inputArea__Textinput}
           onChangeText={onChangeSenha}
           value={Senha}
           placeholder="Senha"
+          secureTextEntry
         />
         <TextInput
           style={styles.inputArea__Textinput}
           onChangeText={onChangeSenhaDois}
           value={SenhaDois}
           placeholder="Senha"
+          secureTextEntry
         />
         <TouchableOpacity
           style={styles.buttons__cadastrar}
@@ -68,6 +84,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginTop: 21,
+    fontSize: 15,
   },
   buttons__cadastrar: {
     marginTop: 40,
