@@ -13,6 +13,7 @@ import {
 import AppLoading from "expo-app-loading";
 import { TelaTreino } from "./telaTreino";
 import { Capoeira } from "./Capoeira";
+import { TelaDeCadastro } from "./TelaCadastro";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,11 @@ function App() {
         <Stack.Screen
           name="TelaLogin"
           component={TelaLogin}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TelaDeCadastro"
+          component={TelaDeCadastro}
           options={{ headerShown: false }}
         />
         <Stack.Screen
