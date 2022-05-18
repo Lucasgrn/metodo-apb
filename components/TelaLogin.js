@@ -22,8 +22,8 @@ const TelaLogin = ({ navigation }) => {
     <AppLoading />;
   }
 
-  const [text, onChangeText] = React.useState(null);
-  const [textDois, onChangeTextDois] = React.useState(null);
+  const [Email, onChangeEmail] = React.useState(null);
+  const [Senha, onChangeSenha] = React.useState(null);
 
   return (
     <View style={styles.body}>
@@ -33,14 +33,14 @@ const TelaLogin = ({ navigation }) => {
       <View style={styles.inputArea}>
         <TextInput
           style={styles.inputArea__login}
-          onChangeText={onChangeText}
-          value={text}
-          placeholder="Usuário"
+          onChangeText={onChangeEmail}
+          value={Email}
+          placeholder="Email"
         />
         <TextInput
           style={styles.inputArea__senha}
-          onChangeText={onChangeTextDois}
-          value={textDois}
+          onChangeText={onChangeSenha}
+          value={Senha}
           placeholder="Senha"
           secureTextEntry
         />
@@ -48,7 +48,12 @@ const TelaLogin = ({ navigation }) => {
       <View style={styles.buttons}>
         <TouchableOpacity
           style={styles.buttons__entrar}
-          onPress={() => navigation.navigate("NavegadorApp")}
+          onPress={() => {
+            let email = Email;
+            let senha = Senha;
+            console.log(`Email: ${email} e senha: ${senha}`);
+            navigation.navigate("NavegadorApp");
+          }}
         >
           <Text style={styles.buttons__entrarText}>entrar</Text>
         </TouchableOpacity>
