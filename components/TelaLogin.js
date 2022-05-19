@@ -6,6 +6,7 @@ import {
   Montserrat_400Regular,
 } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
+import  app  from '../config/firebase.js'  
 
 const TelaLogin = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
