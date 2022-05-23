@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Text,
   ScrollView,
-  SafeAreaView,
 } from "react-native";
 import {
   useFonts,
