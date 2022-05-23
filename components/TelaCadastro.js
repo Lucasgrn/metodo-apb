@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import DateField from "react-native-datefield";
 import RNPickerSelect from "react-native-picker-select";
+import { app, auth } from '../config/firebase '
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const TelaDeCadastro = ({ navigation }) => {
   const [Nome, onChangeNome] = React.useState(null);
@@ -15,6 +17,15 @@ const TelaDeCadastro = ({ navigation }) => {
   const [Senha, onChangeSenha] = React.useState(null);
   const [SenhaDois, onChangeSenhaDois] = React.useState(null);
   const [Genero, onChageGenero] = React.useState(null);
+
+  const cadastro = () => {
+    createUserWithEmailAndPassword(auth, Email, Senha)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigation.navigate('HomeScreen', { idUser: user.uid })
+
+      })
+  }
 
   return (
     <View style={styles.body}>
@@ -64,17 +75,9 @@ const TelaDeCadastro = ({ navigation }) => {
         <TouchableOpacity
           style={styles.buttons__cadastrar}
           onPress={() => {
-            let email = Email;
-            let nome = Nome;
-            let genero = Genero;
-            let senha;
             if (Senha === SenhaDois) {
-              senha = Senha;
+              cadastro
             }
-            console.log(
-              `Email: ${email}, nome: ${nome}, genero: ${genero} e senha: ${senha}`
-            );
-            navigation.navigate("TelaLogin");
           }}
         >
           <Text style={styles.buttons__cadastrarText}>cadastrar</Text>
