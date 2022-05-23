@@ -12,6 +12,7 @@ import {
   Montserrat_400Regular,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
+import { auth } from '../config/firebase'
 
 const TelaLogin = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -24,6 +25,14 @@ const TelaLogin = ({ navigation }) => {
 
   const [Email, onChangeEmail] = React.useState(null);
   const [Senha, onChangeSenha] = React.useState(null);
+
+  const login = () => {
+    signInWithEmailAndPassword(auth, Email, Senha)
+      .then((userCredential) => {
+        const user = userCredential.user;
+      })
+
+  }
 
   return (
     <View style={styles.body}>

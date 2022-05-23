@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import DateField from "react-native-datefield";
 import RNPickerSelect from "react-native-picker-select";
-import { app, auth } from '../config/firebase '
+import { auth } from '../config/firebase '
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const TelaDeCadastro = ({ navigation }) => {
