@@ -30,6 +30,7 @@ const TelaLogin = ({ navigation }) => {
     signInWithEmailAndPassword(auth, Email, Senha)
       .then((userCredential) => {
         const user = userCredential.user;
+        navigation.navigate("NavegadorApp");
       })
 
   }
@@ -58,10 +59,7 @@ const TelaLogin = ({ navigation }) => {
         <TouchableOpacity
           style={styles.buttons__entrar}
           onPress={() => {
-            let email = Email;
-            let senha = Senha;
-            console.log(`Email: ${email} e senha: ${senha}`);
-            navigation.navigate("NavegadorApp");
+            login
           }}
         >
           <Text style={styles.buttons__entrarText}>entrar</Text>
