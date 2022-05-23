@@ -12,6 +12,14 @@ import {
   Montserrat_400Regular,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
+import { Dimensions } from "react-native";
+import { StatusBar } from "react-native";
+
+const statusBarHeight =
+  Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const TelaInformacoes = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -26,18 +34,18 @@ const TelaInformacoes = ({ navigation }) => {
 
   return (
     <View style={styles.body}>
-      <View style={styles.bemvindo}>
-        <ImageBackground
-          source={require("../assets/images/informacoes.png")}
-          style={styles.bemvindo__imagemProfessor}
-        ></ImageBackground>
-        <Text style={styles.bemvindo__header1}>Mestre Pajé</Text>
-        <View style={styles.sobre}>
-          <ScrollView
-            style={styles.scrollView}
-            showsVerticalScrollIndicator={false}
-            overScrollMode={"never"}
-          >
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+        overScrollMode={"never"}
+      >
+        <View style={styles.bemvindo}>
+          <ImageBackground
+            source={require("../assets/images/informacoes.png")}
+            style={styles.bemvindo__imagemProfessor}
+          ></ImageBackground>
+          <Text style={styles.bemvindo__header1}>Mestre Pajé</Text>
+          <View style={styles.sobre}>
             <Text style={styles.sobre__header2}>
               Disposição Histórica – Mestre Pajé{" "}
             </Text>
@@ -104,21 +112,9 @@ const TelaInformacoes = ({ navigation }) => {
               professor pelo Legião Brasileira de Capoeira. Em 2009, foi a vez
               da corda de contramestre.
             </Text>
-            <Text style={styles.sobre__header2}>Estilo de Capoeira</Text>
-            <Text style={styles.sobre__paragrafo}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown{" "}
-            </Text>
-            <Text style={styles.sobre__header2}>Por que fazer o curso?</Text>
-            <Text style={styles.sobre__paragrafo}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown{" "}
-            </Text>
-          </ScrollView>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -131,7 +127,7 @@ const styles = StyleSheet.create({
 
   bemvindo: {
     alignItems: "flex-start",
-    marginTop: 62,
+    marginTop: statusBarHeight + windowHeight * 0.05,
     marginLeft: 24,
     marginRight: 24,
   },
@@ -143,22 +139,23 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat_600SemiBold",
     color: "#0A0D36",
     fontSize: 20,
-    marginTop: 35,
+    marginTop: windowHeight * 0.04,
   },
   sobre: {
-    marginTop: 25,
+    marginTop: windowHeight * 0.03,
   },
   sobre__header2: {
     fontFamily: "Montserrat_400Regular",
     color: "#000",
     fontSize: 15,
-    marginTop: 15,
+    marginTop: windowHeight * 0.02,
   },
-  scrollView: {
-    marginBottom: 365,
-  },
+  // scrollView: {
+  //   marginBottom: 365,
+  // },
   sobre__paragrafo: {
     fontFamily: "Montserrat_400Regular",
+    textAlign: "justify",
     fontSize: 15,
     color: "#7A7A7A",
     marginTop: 8,

@@ -12,6 +12,10 @@ import {
   Montserrat_400Regular,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
+import { StatusBar } from "react-native";
+
+const statusBarHeight =
+  Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
 
 const TelaLogin = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -78,16 +82,16 @@ const styles = StyleSheet.create({
   },
   bemvindo: {
     alignItems: "center",
-    marginTop: 120,
+    marginTop: statusBarHeight + "20%",
   },
   bemvindo__header1: {
     fontFamily: "Montserrat_600SemiBold",
     color: "#262626",
     fontSize: 24,
-    marginTop: 50,
+    marginTop: "20%",
   },
   inputArea: {
-    marginTop: 116,
+    marginTop: "15%",
     alignItems: "center",
     width: "100%",
   },
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F4F4F4",
     height: 52,
     width: "80%",
-    marginTop: 33,
+    marginTop: "5%",
     borderRadius: 10,
     padding: 10,
   },
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 100,
-    marginTop: 34,
+    marginTop: "10%",
     width: "100%",
   },
   buttons__entrar: {
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     maxHeight: 60,
-    marginTop: 20,
+    marginTop: "5%",
     paddingVertical: 16,
     width: "80%",
   },
@@ -151,7 +155,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat_400Regular",
     lineHeight: 18,
     fontSize: 12,
-    marginTop: 20,
+    marginTop: "5%",
   },
 });
 

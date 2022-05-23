@@ -7,18 +7,18 @@ import {
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { Dimensions } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
+import { Dimensions } from "react-native";
 import { StatusBar } from "react-native";
 
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
 
 const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 const videoWidth = windowWidth;
 const videoHeight = videoWidth * 0.5625;
 const imageHeight = windowWidth * 1.07;
-const windowHeight = Dimensions.get("window").height;
 
 MaterialIcons.loadFont();
 
