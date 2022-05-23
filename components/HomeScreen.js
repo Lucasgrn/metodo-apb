@@ -14,6 +14,14 @@ import {
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
 import modulosData from "../assets/data/modulosData";
+import { Dimensions } from "react-native";
+import { StatusBar } from "react-native";
+
+const statusBarHeight =
+  Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const HomeScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
   },
   bemvindo: {
     alignItems: "flex-start",
-    marginTop: 120,
+    marginTop: statusBarHeight + windowHeight * 0.05,
     marginLeft: 24,
   },
   bemvindo__header1: {
@@ -84,7 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   modulosDataWrapper__itemModulo: {
-    marginTop: 32,
+    marginTop: windowHeight * 0.032,
     marginLeft: 20,
   },
   modulosDataWrapper__itemImage: {

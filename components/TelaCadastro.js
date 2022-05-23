@@ -9,6 +9,13 @@ import {
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import RNPickerSelect from "react-native-picker-select";
+import { StatusBar } from "react-native";
+import { Dimensions } from "react-native";
+
+const windowHeight = Dimensions.get("window").height;
+
+const statusBarHeight =
+  Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
 
 const TelaDeCadastro = ({ navigation }) => {
   const [Nome, onChangeNome] = React.useState(null);
@@ -149,7 +156,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputArea: {
-    marginTop: "40%",
+    marginTop: statusBarHeight + windowHeight * 0.2,
     alignItems: "center",
     width: "100%",
   },
@@ -159,7 +166,7 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 10,
     padding: 10,
-    marginTop: 21,
+    marginTop: windowHeight * 0.02,
     fontSize: 15,
   },
   inputArea__Generoinput: {
@@ -168,12 +175,12 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 10,
     padding: 10,
-    marginTop: 21,
+    marginTop: windowHeight * 0.02,
     fontSize: 15,
     justifyContent: "center",
   },
   inputArea__data: {
-    marginTop: 21,
+    marginTop: windowHeight * 0.02,
     backgroundColor: "#F4F4F4",
     height: 52,
     borderRadius: 10,
@@ -182,7 +189,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   buttons__cadastrar: {
-    marginTop: 40,
+    marginTop: windowHeight * 0.04,
     backgroundColor: "#0A0D36",
     borderColor: "#0A0D36",
     borderRadius: 50,
