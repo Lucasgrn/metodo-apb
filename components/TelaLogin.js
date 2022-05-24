@@ -27,6 +27,7 @@ const TelaLogin = ({ navigation }) => {
   const [Senha, onChangeSenha] = React.useState(null);
 
   const login = () => {
+    
     signInWithEmailAndPassword(auth, Email, Senha)
       .then((userCredential) => {
         const user = userCredential.user;

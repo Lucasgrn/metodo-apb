@@ -19,12 +19,13 @@ const TelaDeCadastro = ({ navigation }) => {
   const [Genero, onChageGenero] = React.useState(null);
 
   const cadastro = () => {
+
     createUserWithEmailAndPassword(auth, Email, Senha)
       .then((userCredential) => {
         const user = userCredential.user;
         navigation.navigate('HomeScreen', { idUser: user.uid })
-
       })
+      
   }
 
   return (
