@@ -5,6 +5,10 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import {
   useFonts,
@@ -15,7 +19,7 @@ import AppLoading from "expo-app-loading";
 import { StatusBar } from "react-native";
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
-import { auth } from '../config/firebase';
+import { auth } from "../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const TelaLogin = ({ navigation }) => {
@@ -32,71 +36,78 @@ const TelaLogin = ({ navigation }) => {
   const [Erro, onChangeErro] = React.useState(null);
 
   const login = () => {
-
     signInWithEmailAndPassword(auth, Email, Senha)
       .then((userCredential) => {
         const user = userCredential.user;
         navigation.navigate("NavegadorApp");
       })
       .catch((error) => {
-        if (error.code == 'auth/missing-email') {
-          onChangeErro('Email vazio')
-        } else if(error.code == 'auth/wrong-password'){
-          onChangeErro('Senha incorreta')
-        } else if(error.code == 'auth/user-not-found'){
-          onChangeErro('Email não cadastrado')
+        if (error.code == "auth/missing-email") {
+          onChangeErro("Email vazio");
+        } else if (error.code == "auth/wrong-password") {
+          onChangeErro("Senha incorreta");
+        } else if (error.code == "auth/user-not-found") {
+          onChangeErro("Email não cadastrado");
         }
-        
-      })
-
-  }
+      });
+  };
 
   return (
-    <View style={styles.body}>
-      <View style={styles.bemvindo}>
-        <Text style={styles.bemvindo__header1}>Seja bem vindo(a)!</Text>
-      </View>
-      <View style={styles.inputArea}>
-        <TextInput
-          style={styles.inputArea__login}
-          onChangeText={onChangeEmail}
-          value={Email}
-          placeholder="Email"
-        />
-        <TextInput
-          style={styles.inputArea__senha}
-          onChangeText={onChangeSenha}
-          value={Senha}
-          placeholder="Senha"
-          secureTextEntry
-        />
-        <Text>{Erro}</Text>
-      </View>
-      <View style={styles.buttons}>
-        <TouchableOpacity
-          style={styles.buttons__entrar}
-          onPress={login}
-        >
-          <Text style={styles.buttons__entrarText}>entrar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttons__cadastrar}
-          onPress={() => navigation.navigate("TelaDeCadastro")}
-        >
-          <Text style={styles.buttons__cadastrarText}>cadastrar-se</Text>
-        </TouchableOpacity>
-        <Text style={styles.buttons__esqueceuSenha}>
-          Esqueceu sua senha? Toque aqui para recuperar.
-        </Text>
-      </View>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.body}>
+          <View>
+            <View style={styles.bemvindo}>
+              <Text style={styles.bemvindo__header1}>Seja bem vindo(a)!</Text>
+            </View>
+            <View style={styles.inputArea}>
+              <TextInput
+                style={styles.inputArea__login}
+                onChangeText={onChangeEmail}
+                value={Email}
+                placeholder="Email"
+              />
+              <TextInput
+                style={styles.inputArea__senha}
+                onChangeText={onChangeSenha}
+                value={Senha}
+                placeholder="Senha"
+                secureTextEntry
+              />
+              <Text>{Erro}</Text>
+            </View>
+            <View style={styles.buttons}>
+              <TouchableOpacity style={styles.buttons__entrar} onPress={login}>
+                <Text style={styles.buttons__entrarText}>entrar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttons__cadastrar}
+                onPress={() => navigation.navigate("TelaDeCadastro")}
+              >
+                <Text style={styles.buttons__cadastrarText}>cadastrar-se</Text>
+              </TouchableOpacity>
+              <Text style={styles.buttons__esqueceuSenha}>
+                Esqueceu sua senha? Toque aqui para recuperar.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   body: {
     backgroundColor: "#FAFCFE",
     flex: 1,
+    justifyContent: "space-around",
   },
   bemvindo: {
     alignItems: "center",
@@ -132,7 +143,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 100,
-    marginTop: "10%",
+    marginTop: "5%",
     width: "100%",
   },
   buttons__entrar: {
