@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Text,
   ScrollView,
-  SafeAreaView,
 } from "react-native";
 import {
   useFonts,
@@ -173,13 +172,13 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: "#fff",
-    marginTop: 15,
+    marginTop: windowHeight * 0.02,
     marginBottom: 365,
   },
   scrollView__elementoAula: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 15,
+    marginVertical: windowHeight * 0.02,
     marginHorizontal: 24,
   },
   elementoAula__textos: {

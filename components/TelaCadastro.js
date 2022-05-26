@@ -5,9 +5,15 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Platform,
 } from "react-native";
-import DateField from "react-native-datefield";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import RNPickerSelect from "react-native-picker-select";
+import { StatusBar } from "react-native";
+import { Dimensions } from "react-native";
+const windowHeight = Dimensions.get("window").height;
+const statusBarHeight =
+  Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
 import { auth } from '../config/firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -37,6 +43,38 @@ const TelaDeCadastro = ({ navigation }) => {
 
   }
 
+  // date time picker
+  const [date, setDate] = React.useState(new Date());
+  const [mode, setMode] = React.useState("date");
+  const [show, setShow] = React.useState(false);
+  const [dataDeNascimento, setdataDeNascimento] =
+    React.useState("Data De Nascimento");
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === "ios");
+    setDate(currentDate);
+
+    let tempDate = new Date(currentDate);
+    let fDate =
+      tempDate.getDate() +
+      "/" +
+      (tempDate.getMonth() + 1) +
+      "/" +
+      tempDate.getFullYear();
+    setdataDeNascimento(fDate);
+  };
+
+  let estiloDataDeNascimento = dataDeNascimento;
+  estiloDataDeNascimento === "Data De Nascimento"
+    ? (estiloDataDeNascimento = styles.inputArea__teste1)
+    : (estiloDataDeNascimento = styles.inputArea__teste2);
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
   return (
     <View style={styles.body}>
       <View style={styles.inputArea}>
@@ -45,6 +83,7 @@ const TelaDeCadastro = ({ navigation }) => {
           onChangeText={onChangeEmail}
           value={Email}
           placeholder="Email"
+          placeholderTextColor={"#7A7A7A"}
         />
         <Text>{Erro}</Text>
         <TextInput
@@ -52,10 +91,12 @@ const TelaDeCadastro = ({ navigation }) => {
           onChangeText={onChangeNome}
           value={Nome}
           placeholder="Nome"
+          placeholderTextColor={"#7A7A7A"}
         />
         <View style={styles.inputArea__Generoinput}>
           <RNPickerSelect
             onValueChange={onChangeGenero}
+            style={styles.inputArea__genero}
             placeholder={{ label: "Genero", value: null }}
             items={[
               { label: "Masculino", value: "Masculino" },
@@ -63,17 +104,33 @@ const TelaDeCadastro = ({ navigation }) => {
             ]}
           />
         </View>
-        {/* <DateField
-          labelDate="Dia"
-          labelMonth="Mes"
-          labelYear="Ano"
-          styleInput={styles.inputBorder}
-        /> */}
+
+        <TouchableOpacity
+          style={styles.inputArea__data}
+          title="DatePicker"
+          onPress={() => {
+            showMode("date");
+          }}
+        >
+          <Text style={estiloDataDeNascimento}>{dataDeNascimento}</Text>
+        </TouchableOpacity>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            display="spinner"
+            onChange={onChange}
+          />
+        )}
+
         <TextInput
           style={styles.inputArea__Textinput}
           onChangeText={onChangeSenha}
           value={Senha}
           placeholder="Senha"
+          placeholderTextColor={"#7A7A7A"}
           secureTextEntry
         />
         <TextInput
@@ -81,6 +138,7 @@ const TelaDeCadastro = ({ navigation }) => {
           onChangeText={onChangeSenhaDois}
           value={SenhaDois}
           placeholder="Repetir Senha"
+          placeholderTextColor={"#7A7A7A"}
           secureTextEntry
         />
         
@@ -92,7 +150,6 @@ const TelaDeCadastro = ({ navigation }) => {
             } else {
               console.log('Senha não são iguais')
             }
-
           }}
         >
           <Text style={styles.buttons__cadastrarText}>cadastrar</Text>
@@ -103,12 +160,18 @@ const TelaDeCadastro = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  inputArea__teste1: {
+    color: "#7A7A7A",
+  },
+  inputArea__teste2: {
+    color: "#000",
+  },
   body: {
     backgroundColor: "#FAFCFE",
     flex: 1,
   },
   inputArea: {
-    marginTop: "40%",
+    marginTop: statusBarHeight + windowHeight * 0.2,
     alignItems: "center",
     width: "100%",
   },
@@ -118,7 +181,7 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 10,
     padding: 10,
-    marginTop: 21,
+    marginTop: windowHeight * 0.02,
     fontSize: 15,
   },
   inputArea__Generoinput: {
@@ -127,22 +190,21 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 10,
     padding: 10,
-    marginTop: 21,
+    marginTop: windowHeight * 0.02,
     fontSize: 15,
-    alignItems: "center",
     justifyContent: "center",
   },
-  // inputBorder: {
-  //   backgroundColor: "#F4F4F4",
-  //   height: 52,
-  //   width: "27%",
-  //   borderRadius: 10,
-  //   padding: 10,
-  //   marginTop: 21,
-  //   fontSize: 15,
-  // },
+  inputArea__data: {
+    marginTop: windowHeight * 0.02,
+    backgroundColor: "#F4F4F4",
+    height: 52,
+    borderRadius: 10,
+    justifyContent: "center",
+    paddingHorizontal: 10,
+    width: "80%",
+  },
   buttons__cadastrar: {
-    marginTop: 40,
+    marginTop: windowHeight * 0.04,
     backgroundColor: "#0A0D36",
     borderColor: "#0A0D36",
     borderRadius: 50,
