@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import DateField from "react-native-datefield";
 import RNPickerSelect from "react-native-picker-select";
-import { auth } from '../config/firebase '
+import { auth } from '../config/firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const TelaDeCadastro = ({ navigation }) => {
@@ -16,16 +16,25 @@ const TelaDeCadastro = ({ navigation }) => {
   const [Email, onChangeEmail] = React.useState(null);
   const [Senha, onChangeSenha] = React.useState(null);
   const [SenhaDois, onChangeSenhaDois] = React.useState(null);
-  const [Genero, onChageGenero] = React.useState(null);
+  const [Genero, onChangeGenero] = React.useState(null);
+  const [Erro, onChangeErro] = React.useState(null);
 
   const cadastro = () => {
 
     createUserWithEmailAndPassword(auth, Email, Senha)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigation.navigate('HomeScreen', { idUser: user.uid })
+        navigation.navigate('NavegadorApp', { idUser: user.uid })
       })
-      
+      .catch((error) => {
+        if (error.code == 'auth/missing-email') {
+          onChangeErro('Email vazio')
+        } else if (error.code == 'auth/email-already-in-use') {
+          onChangeErro('Email já em uso')
+        }
+
+      })
+
   }
 
   return (
@@ -37,6 +46,7 @@ const TelaDeCadastro = ({ navigation }) => {
           value={Email}
           placeholder="Email"
         />
+        <Text>{Erro}</Text>
         <TextInput
           style={styles.inputArea__Textinput}
           onChangeText={onChangeNome}
@@ -45,7 +55,7 @@ const TelaDeCadastro = ({ navigation }) => {
         />
         <View style={styles.inputArea__Generoinput}>
           <RNPickerSelect
-            onValueChange={onChageGenero}
+            onValueChange={onChangeGenero}
             placeholder={{ label: "Genero", value: null }}
             items={[
               { label: "Masculino", value: "Masculino" },
@@ -63,7 +73,7 @@ const TelaDeCadastro = ({ navigation }) => {
           style={styles.inputArea__Textinput}
           onChangeText={onChangeSenha}
           value={Senha}
-          placeholder="Nova Senha"
+          placeholder="Senha"
           secureTextEntry
         />
         <TextInput
@@ -73,12 +83,16 @@ const TelaDeCadastro = ({ navigation }) => {
           placeholder="Repetir Senha"
           secureTextEntry
         />
+        
         <TouchableOpacity
           style={styles.buttons__cadastrar}
           onPress={() => {
             if (Senha === SenhaDois) {
-              cadastro
+              cadastro()
+            } else {
+              console.log('Senha não são iguais')
             }
+
           }}
         >
           <Text style={styles.buttons__cadastrarText}>cadastrar</Text>
