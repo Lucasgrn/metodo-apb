@@ -11,18 +11,37 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import RNPickerSelect from "react-native-picker-select";
 import { StatusBar } from "react-native";
 import { Dimensions } from "react-native";
-
 const windowHeight = Dimensions.get("window").height;
-
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
+import { auth } from '../config/firebase'
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const TelaDeCadastro = ({ navigation }) => {
   const [Nome, onChangeNome] = React.useState(null);
   const [Email, onChangeEmail] = React.useState(null);
   const [Senha, onChangeSenha] = React.useState(null);
   const [SenhaDois, onChangeSenhaDois] = React.useState(null);
-  const [Genero, onChageGenero] = React.useState(null);
+  const [Genero, onChangeGenero] = React.useState(null);
+  const [Erro, onChangeErro] = React.useState(null);
+
+  const cadastro = () => {
+
+    createUserWithEmailAndPassword(auth, Email, Senha)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigation.navigate('NavegadorApp', { idUser: user.uid })
+      })
+      .catch((error) => {
+        if (error.code == 'auth/missing-email') {
+          onChangeErro('Email vazio')
+        } else if (error.code == 'auth/email-already-in-use') {
+          onChangeErro('Email já em uso')
+        }
+
+      })
+
+  }
 
   // date time picker
   const [date, setDate] = React.useState(new Date());
@@ -66,6 +85,7 @@ const TelaDeCadastro = ({ navigation }) => {
           placeholder="Email"
           placeholderTextColor={"#7A7A7A"}
         />
+        <Text>{Erro}</Text>
         <TextInput
           style={styles.inputArea__Textinput}
           onChangeText={onChangeNome}
@@ -75,8 +95,8 @@ const TelaDeCadastro = ({ navigation }) => {
         />
         <View style={styles.inputArea__Generoinput}>
           <RNPickerSelect
+            onValueChange={onChangeGenero}
             style={styles.inputArea__genero}
-            onValueChange={onChageGenero}
             placeholder={{ label: "Genero", value: null }}
             items={[
               { label: "Masculino", value: "Masculino" },
@@ -109,7 +129,7 @@ const TelaDeCadastro = ({ navigation }) => {
           style={styles.inputArea__Textinput}
           onChangeText={onChangeSenha}
           value={Senha}
-          placeholder="Nova Senha"
+          placeholder="Senha"
           placeholderTextColor={"#7A7A7A"}
           secureTextEntry
         />
@@ -121,20 +141,15 @@ const TelaDeCadastro = ({ navigation }) => {
           placeholderTextColor={"#7A7A7A"}
           secureTextEntry
         />
+        
         <TouchableOpacity
           style={styles.buttons__cadastrar}
           onPress={() => {
-            let email = Email;
-            let nome = Nome;
-            let genero = Genero;
-            let senha;
             if (Senha === SenhaDois) {
-              senha = Senha;
+              cadastro()
+            } else {
+              console.log('Senha não são iguais')
             }
-            console.log(
-              `Email: ${email}, nome: ${nome}, genero: ${genero}, data de nascimento: ${dataDeNascimento} e senha: ${senha}`
-            );
-            navigation.navigate("TelaLogin");
           }}
         >
           <Text style={styles.buttons__cadastrarText}>cadastrar</Text>
