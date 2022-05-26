@@ -12,7 +12,8 @@ import {
   Montserrat_400Regular,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
-import { auth } from '../config/firebase'
+import { auth } from '../config/firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const TelaLogin = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -25,13 +26,24 @@ const TelaLogin = ({ navigation }) => {
 
   const [Email, onChangeEmail] = React.useState(null);
   const [Senha, onChangeSenha] = React.useState(null);
+  const [Erro, onChangeErro] = React.useState(null);
 
   const login = () => {
-    
+
     signInWithEmailAndPassword(auth, Email, Senha)
       .then((userCredential) => {
         const user = userCredential.user;
         navigation.navigate("NavegadorApp");
+      })
+      .catch((error) => {
+        if (error.code == 'auth/missing-email') {
+          onChangeErro('Email vazio')
+        } else if(error.code == 'auth/wrong-password'){
+          onChangeErro('Senha incorreta')
+        } else if(error.code == 'auth/user-not-found'){
+          onChangeErro('Email não cadastrado')
+        }
+        
       })
 
   }
@@ -55,13 +67,12 @@ const TelaLogin = ({ navigation }) => {
           placeholder="Senha"
           secureTextEntry
         />
+        <Text>{Erro}</Text>
       </View>
       <View style={styles.buttons}>
         <TouchableOpacity
           style={styles.buttons__entrar}
-          onPress={() => {
-            login
-          }}
+          onPress={login}
         >
           <Text style={styles.buttons__entrarText}>entrar</Text>
         </TouchableOpacity>
