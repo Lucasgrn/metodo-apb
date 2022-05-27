@@ -141,11 +141,9 @@ const TelaDeCadastro = ({ navigation }) => {
                 value={date}
                 mode={mode}
                 is24Hour={true}
-                display="spinner"
                 onChange={onChange}
               />
             )}
-
             <TextInput
               style={styles.inputArea__Textinput}
               onChangeText={onChangeSenha}

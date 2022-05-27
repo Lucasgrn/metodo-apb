@@ -38,6 +38,7 @@ const TelaLogin = ({ navigation }) => {
   const login = () => {
     signInWithEmailAndPassword(auth, Email, Senha)
       .then((userCredential) => {
+        onChangeErro(null);
         const user = userCredential.user;
         navigation.navigate("NavegadorApp");
       })
@@ -77,7 +78,11 @@ const TelaLogin = ({ navigation }) => {
                 placeholder="Senha"
                 secureTextEntry
               />
-              <Text>{Erro}</Text>
+              {Erro == null ? (
+                console.log("")
+              ) : (
+                <Text style={styles.inputArea__MensagemErro}>{Erro}</Text>
+              )}
             </View>
             <View style={styles.buttons}>
               <TouchableOpacity style={styles.buttons__entrar} onPress={login}>
@@ -138,6 +143,10 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     borderRadius: 10,
     padding: 10,
+  },
+  inputArea__MensagemErro: {
+    fontFamily: "Montserrat_400Regular",
+    color: "#f00",
   },
   buttons: {
     alignItems: "center",

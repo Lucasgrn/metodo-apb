@@ -22,6 +22,7 @@ const statusBarHeight =
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
+const imageWidth = windowWidth - 48;
 
 const HomeScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -64,7 +65,6 @@ const HomeScreen = ({ navigation }) => {
           data={modulosData}
           renderItem={renderModulosItem}
           keyExtractor={(item) => item.id}
-          horizontal
           showsHorizontalScrollIndicator={false}
           overScrollMode={"never"}
         />
@@ -90,14 +90,18 @@ const styles = StyleSheet.create({
   },
   modulosDataWrapper: {
     flex: 1,
+    marginHorizontal: 24,
+    alignItems: "flex-start",
   },
   modulosDataWrapper__itemModulo: {
+    justifyContent: "center",
     marginTop: windowHeight * 0.032,
-    marginLeft: 20,
   },
   modulosDataWrapper__itemImage: {
-    width: 234,
-    height: 354,
+    width: imageWidth,
+    height: imageWidth / 3,
+    paddingTop: 20,
+    paddingLeft: 14,
   },
   testando: {
     fontFamily: "Montserrat_600SemiBold",
