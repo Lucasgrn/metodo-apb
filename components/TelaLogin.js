@@ -4,6 +4,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  ImageBackground,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
@@ -62,7 +63,10 @@ const TelaLogin = ({ navigation }) => {
         <View style={styles.body}>
           <View>
             <View style={styles.bemvindo}>
-              <Text style={styles.bemvindo__header1}>Seja bem vindo(a)!</Text>
+              <ImageBackground
+                source={require("../assets/images/logo.png")}
+                style={styles.logo}
+              />
             </View>
             <View style={styles.inputArea}>
               <TextInput
@@ -116,13 +120,11 @@ const styles = StyleSheet.create({
   },
   bemvindo: {
     alignItems: "center",
-    marginTop: statusBarHeight + "20%",
+    marginTop: statusBarHeight,
   },
-  bemvindo__header1: {
-    fontFamily: "Montserrat_600SemiBold",
-    color: "#262626",
-    fontSize: 24,
-    marginTop: "20%",
+  logo: {
+    width: 169,
+    height: 169,
   },
   inputArea: {
     marginTop: "15%",
