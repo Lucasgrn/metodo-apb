@@ -12,17 +12,21 @@ import { HomeScreen } from "./HomeScreen";
 import { TelaInformacoes } from "./TelaInfomacoes";
 import { TelaPerfil } from "./TelaPerfi";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../config/firebase'
 
 MaterialIcons.loadFont();
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-const NavegadorApp = ({ navigation }) => {
+const NavegadorApp = async ({ navigation, route }) => {
   const [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
     Montserrat_400Regular,
   });
+  const ref = doc(db, 'users', route.params.user.uid)
+  const data = await getDoc(ref)
   if (!fontsLoaded) {
     <AppLoading />;
   }
@@ -42,7 +46,10 @@ const NavegadorApp = ({ navigation }) => {
             <MaterialIcons name="home" size={24} color={color} />
           ),
         }}
+        //userName={data.data().name}
       />
+      {console.log(data.data())}
+
       <Tab.Screen
         name="info"
         component={TelaInformacoes}
