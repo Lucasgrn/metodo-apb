@@ -17,8 +17,10 @@ import { Dimensions } from "react-native";
 const windowHeight = Dimensions.get("window").height;
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
-import { auth } from "../config/firebase";
+import { auth, db } from '../config/firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from 'firebase/firestore'
+import { async } from "@firebase/util";
 
 const TelaDeCadastro = ({ navigation }) => {
   const [Nome, onChangeNome] = React.useState(null);
@@ -38,10 +40,16 @@ const TelaDeCadastro = ({ navigation }) => {
 
   const cadastro = () => {
     createUserWithEmailAndPassword(auth, Email, Senha)
-      .then((userCredential) => {
-        onChangeErro(null);
+      .then(async (userCredential) => {
         const user = userCredential.user;
-        navigation.navigate("NavegadorApp", { idUser: user.uid });
+        navigation.navigate('NavegadorApp', { idUser: user.uid })
+        await setDoc(doc(db, 'users', user.uid), {
+          name: Nome,
+          birth: dataDeNascimento,
+          gender: Genero,
+          sub: false
+        })
+
       })
       .catch((error) => {
         if (error.code == "auth/missing-email") {
@@ -51,8 +59,10 @@ const TelaDeCadastro = ({ navigation }) => {
         } else if (error.code == "auth/invalid-email") {
           onChangeErro("Email Invalido");
         }
-      });
-  };
+        console.log(error.code)
+      })
+  }
+
 
   // date time picker
   const [date, setDate] = React.useState(new Date());
@@ -165,7 +175,6 @@ const TelaDeCadastro = ({ navigation }) => {
               placeholderTextColor={"#7A7A7A"}
               secureTextEntry
             />
-
             <TouchableOpacity
               style={styles.buttons__cadastrar}
               onPress={() => {
