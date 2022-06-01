@@ -24,7 +24,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const imageWidth = windowWidth - 48;
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation }, props) => {
   const [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
     Montserrat_400Regular,
@@ -54,11 +54,11 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
     );
   };
-
+  console.log(props.userName)
   return (
     <View style={styles.body}>
       <View style={styles.bemvindo}>
-        <Text style={styles.bemvindo__header1}>Olá, Fulano</Text>
+        <Text style={styles.bemvindo__header1}>Olá, {props.userName}</Text>
       </View>
       <View style={styles.modulosDataWrapper}>
         <FlatList

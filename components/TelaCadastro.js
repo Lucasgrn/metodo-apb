@@ -42,7 +42,7 @@ const TelaDeCadastro = ({ navigation }) => {
     createUserWithEmailAndPassword(auth, Email, Senha)
       .then(async (userCredential) => {
         const user = userCredential.user;
-        navigation.navigate('NavegadorApp', { idUser: user.uid })
+        navigation.navigate('NavegadorApp', { uid: user.uid})
         await setDoc(doc(db, 'users', user.uid), {
           name: Nome,
           birth: dataDeNascimento,
