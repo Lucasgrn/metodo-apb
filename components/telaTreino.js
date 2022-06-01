@@ -57,14 +57,14 @@ const TelaTreino = ({ route, navigation }) => {
               <MaterialIcons name="timer" size={18} color={"#0A0D36"} />
               <Text>2 Horas</Text>
             </View>
-            <View style={styles.detalhes__caloriasTreino}>
+            {/* <View style={styles.detalhes__caloriasTreino}>
               <MaterialIcons
                 name="local-fire-department"
                 size={18}
                 color={"#0A0D36"}
               />
               <Text>15000 Kcl</Text>
-            </View>
+            </View> */}
           </View>
         </View>
 

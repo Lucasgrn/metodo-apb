@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import {
   useFonts,
   Montserrat_600SemiBold,
@@ -8,6 +8,7 @@ import {
 import AppLoading from "expo-app-loading";
 import perfilData from "../assets/data/perfilData";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Dimensions } from "react-native";
 import { StatusBar } from "react-native";
 
@@ -18,6 +19,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 MaterialIcons.loadFont();
+MaterialCommunityIcons.loadFont();
 
 const TelaPerfil = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -36,6 +38,58 @@ const TelaPerfil = ({ navigation }) => {
         <View style={styles.perfilWrapper__banner}></View>
         <Text style={styles.perfilWrapper__header1}>Fulano de tal</Text>
       </View>
+      <TouchableOpacity style={styles.assinaturaButton}>
+        <View>
+          <MaterialCommunityIcons
+            name="credit-card-plus"
+            size={34}
+            color={"#0A0D36"}
+            style={styles.treinoWrapper__iconeTreino}
+          />
+        </View>
+        <View style={styles.assinaturaButtonDois}>
+          <View>
+            <Text style={styles.treinoWrapper__tituloTreino}>Assinatura</Text>
+            <Text style={styles.treinoWrapper__detalhesassinatura}>
+              Sem plano ativo
+            </Text>
+          </View>
+          <View>
+            <MaterialIcons
+              name="arrow-forward-ios"
+              size={14}
+              color={"#7a7a7a"}
+              style={styles.treinoWrapper__iconeTreino}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.assinaturaButton}>
+        <View>
+          <MaterialCommunityIcons
+            name="credit-card"
+            size={34}
+            color={"#0A0D36"}
+            style={styles.treinoWrapper__iconeTreino}
+          />
+        </View>
+        <View style={styles.assinaturaButtonDois}>
+          <View>
+            <Text style={styles.treinoWrapper__tituloTreino}>Assinatura</Text>
+            <Text style={styles.treinoWrapper__detalhesassinatura}>
+              Plano Premium
+            </Text>
+          </View>
+          <View>
+            <MaterialIcons
+              name="arrow-forward-ios"
+              size={14}
+              color={"#7a7a7a"}
+              style={styles.treinoWrapper__iconeTreino}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
       <View style={styles.treinosWrapper}>
         {/* Ultimo treinado */}
         <Text style={styles.treinosWrapper__header2}>Ultimo treino</Text>
@@ -100,6 +154,19 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginTop: windowHeight * 0.07,
   },
+  assinaturaButton: {
+    marginLeft: 35,
+    marginTop: 24,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+  },
+  assinaturaButtonDois: {
+    width: "80%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   treinosWrapper__header2: {
     fontFamily: "Montserrat_600SemiBold",
     color: "#262626",
@@ -142,6 +209,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 18,
     width: "80%",
+  },
+  treinoWrapper__detalhesassinatura: {
+    fontFamily: "Montserrat_400Regular",
+    color: "#262626",
+    fontSize: 14,
+    lineHeight: 18,
   },
 });
 
