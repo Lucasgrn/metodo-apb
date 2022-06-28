@@ -10,6 +10,7 @@ import perfilData from "../assets/data/perfilData";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { Dimensions } from "react-native";
 import { StatusBar } from "react-native";
+import { userData } from "../assets/data/userCache";
 
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
@@ -27,6 +28,8 @@ const TelaPerfil = ({ navigation }) => {
   if (!fontsLoaded) {
     <AppLoading />;
   }
+  let firstName = userData.name.split(' ')[0];
+  let lastName = userData.name.split(' ').slice(-1).join('');
 
   const [number, onChangeNumber] = React.useState(null);
 
@@ -34,7 +37,7 @@ const TelaPerfil = ({ navigation }) => {
     <View style={styles.body}>
       <View style={styles.perfilWrapper}>
         <View style={styles.perfilWrapper__banner}></View>
-        <Text style={styles.perfilWrapper__header1}>Fulano de tal</Text>
+        <Text style={styles.perfilWrapper__header1}>{`${firstName}, ${lastName}`}</Text>
       </View>
       <View style={styles.treinosWrapper}>
         {/* Ultimo treinado */}
