@@ -16,6 +16,7 @@ import AppLoading from "expo-app-loading";
 import modulosData from "../assets/data/modulosData";
 import { Dimensions } from "react-native";
 import { StatusBar } from "react-native";
+import {getData, userData} from "../assets/data/userCache";
 
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
@@ -34,6 +35,8 @@ const HomeScreen = ({ navigation }, props) => {
   }
 
   const [number, onChangeNumber] = React.useState(null);
+  let firstName = userData.name.split(' ');
+  
 
   const renderModulosItem = ({ item }) => {
     return (
@@ -54,11 +57,11 @@ const HomeScreen = ({ navigation }, props) => {
       </TouchableOpacity>
     );
   };
-  console.log(props.userName)
   return (
     <View style={styles.body}>
       <View style={styles.bemvindo}>
-        <Text style={styles.bemvindo__header1}>Olá, {props.userName}</Text>
+        
+        <Text style={styles.bemvindo__header1}>Olá, {firstName[0]}</Text>
       </View>
       <View style={styles.modulosDataWrapper}>
         <FlatList

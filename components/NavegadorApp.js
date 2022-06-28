@@ -20,7 +20,7 @@ MaterialIcons.loadFont();
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-const NavegadorApp = ({ navigation, route }) => {
+const NavegadorApp = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
     Montserrat_400Regular,
@@ -28,7 +28,6 @@ const NavegadorApp = ({ navigation, route }) => {
   if (!fontsLoaded) {
     <AppLoading />;
   }
-  let data = route.params.data
 
   return (
     <Tab.Navigator
@@ -45,8 +44,8 @@ const NavegadorApp = ({ navigation, route }) => {
             <MaterialIcons name="home" size={24} color={color} />
           ),
         }}
-        userName={data.name}
       />
+
       <Tab.Screen
         name="info"
         component={TelaInformacoes}

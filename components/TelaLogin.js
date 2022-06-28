@@ -23,6 +23,7 @@ const statusBarHeight =
 import { auth, db } from "../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from 'firebase/firestore';
+import getData from "../assets/data/userCache";
 
 const TelaLogin = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -47,7 +48,8 @@ const TelaLogin = ({ navigation }) => {
         const hardData = await getDoc(docRef)
         let data = hardData.data()
         // console.log(data)
-        navigation.navigate('NavegadorApp', { data: data });
+        getData(data)
+        navigation.navigate('NavegadorApp');
       })
       .catch((error) => {
         if (error.code == "auth/missing-email") {
