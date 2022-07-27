@@ -21,6 +21,7 @@ import { auth, db } from '../config/firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from 'firebase/firestore'
 import { async } from "@firebase/util";
+import getData from "../assets/data/userCache";
 
 const TelaDeCadastro = ({ navigation }) => {
   const [Nome, onChangeNome] = React.useState(null);
@@ -32,7 +33,7 @@ const TelaDeCadastro = ({ navigation }) => {
   const [regexSenha, onChangeregexSenha] = React.useState(null);
 
   // validar senha
-  validateSenha = (valorSenha) => {
+  let validateSenha = (valorSenha) => {
     let re =
       /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     return re.test(valorSenha);
@@ -42,13 +43,14 @@ const TelaDeCadastro = ({ navigation }) => {
     createUserWithEmailAndPassword(auth, Email, Senha)
       .then(async (userCredential) => {
         const user = userCredential.user;
-        navigation.navigate('NavegadorApp', { idUser: user.uid })
+        navigation.navigate('TelaLogin')
         await setDoc(doc(db, 'users', user.uid), {
           name: Nome,
           birth: dataDeNascimento,
           gender: Genero,
           sub: false
         })
+        
 
       })
       .catch((error) => {

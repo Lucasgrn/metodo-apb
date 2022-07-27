@@ -12,6 +12,8 @@ import { HomeScreen } from "./HomeScreen";
 import { TelaInformacoes } from "./TelaInfomacoes";
 import { TelaPerfil } from "./TelaPerfi";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { db } from '../config/firebase';
+import { doc, getDoc, collection } from 'firebase/firestore';
 
 MaterialIcons.loadFont();
 
@@ -43,6 +45,7 @@ const NavegadorApp = ({ navigation }) => {
           ),
         }}
       />
+
       <Tab.Screen
         name="info"
         component={TelaInformacoes}

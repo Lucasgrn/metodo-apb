@@ -16,6 +16,7 @@ import AppLoading from "expo-app-loading";
 import modulosData from "../assets/data/modulosData";
 import { Dimensions } from "react-native";
 import { StatusBar } from "react-native";
+import {getData, userData} from "../assets/data/userCache";
 
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
@@ -24,7 +25,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const imageWidth = windowWidth - 48;
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation }, props) => {
   const [fontsLoaded] = useFonts({
     Montserrat_600SemiBold,
     Montserrat_400Regular,
@@ -34,6 +35,8 @@ const HomeScreen = ({ navigation }) => {
   }
 
   const [number, onChangeNumber] = React.useState(null);
+  let firstName = userData.name.split(' ');
+  
 
   const renderModulosItem = ({ item }) => {
     return (
@@ -54,11 +57,11 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
     );
   };
-
   return (
     <View style={styles.body}>
       <View style={styles.bemvindo}>
-        <Text style={styles.bemvindo__header1}>Olá, Fulano</Text>
+        
+        <Text style={styles.bemvindo__header1}>Olá, {firstName[0]}</Text>
       </View>
       <View style={styles.modulosDataWrapper}>
         <FlatList

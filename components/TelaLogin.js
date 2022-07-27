@@ -20,8 +20,10 @@ import AppLoading from "expo-app-loading";
 import { StatusBar } from "react-native";
 const statusBarHeight =
   Platform.OS === "ios" ? 0 : ("statusBarHeight: ", StatusBar.currentHeight);
-import { auth } from "../config/firebase";
+import { auth, db } from "../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from 'firebase/firestore';
+import getData from "../assets/data/userCache";
 
 const TelaLogin = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -38,10 +40,16 @@ const TelaLogin = ({ navigation }) => {
 
   const login = () => {
     signInWithEmailAndPassword(auth, Email, Senha)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         onChangeErro(null);
-        const user = userCredential.user;
-        navigation.navigate("NavegadorApp");
+        let user = userCredential.user;
+
+        const docRef = doc(db, 'users', user.uid)
+        const hardData = await getDoc(docRef)
+        let data = hardData.data()
+        // console.log(data)
+        getData(data)
+        navigation.navigate('NavegadorApp');
       })
       .catch((error) => {
         if (error.code == "auth/missing-email") {
